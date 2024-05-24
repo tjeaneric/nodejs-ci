@@ -4,6 +4,7 @@ RUN apk --no-cache add git
 
 
 # Set working directory
+COPY . ./app
 WORKDIR /app
 
 # 
