@@ -6,19 +6,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm i
-      - run: npm run build --if-present
-      - run: npm test
-        # env:
-        #   NODE_ENV: test
-        #   DB_HOST: 127.0.0.1
-        #   DB_PORT: 3306
-        #   DB_USER: ${{secrets.DBR_NAME}}
-        #   DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-        #   DB_DATABASE: ${{secrets.DB_NAME}}
+          ecr: auto
+          logout: true
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+      - name: Extract metadata (labels, tags, etc.) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: tuyishimire/nodejs-ci
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: tuyishimire/nodejs-ci:latest
+          labels: ${{ steps.meta.outputs.labels }}
