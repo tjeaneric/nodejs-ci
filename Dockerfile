@@ -3,10 +3,10 @@ FROM node:alpine AS base
 RUN apk --no-cache add git
 
 
+COPY ./node-express-server-rest-api ./app
+
 # Set working directory
 WORKDIR /app
-
-COPY ./node-express-server-rest-api .
 
 # 
 RUN chmod +x ./start.sh
