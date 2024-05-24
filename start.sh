@@ -47,11 +47,23 @@ else
 fi
 
 
-# Check for package.json
-if [ ! -f "package.json" ]; then
-  echo "Error: package.json not found."
+# Define the directory to check
+APP_DIR="node-express-server-rest-api"
+
+# Check if the app directory exists
+if [ ! -d "$APP_DIR" ]; then
+  echo "Error: Directory '$APP_DIR' not found!"
   exit 1
 fi
+
+# Check if package.json exists within the app directory
+if [ ! -f "$APP_DIR/package.json" ]; then
+  echo "Error: package.json not found in '$APP_DIR'!"
+  exit 1
+fi
+
+echo "package.json found in '$APP_DIR'."
+
 
 # Install dependencies using npm
 npm install
