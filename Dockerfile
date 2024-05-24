@@ -2,15 +2,14 @@
 FROM node:alpine AS base
 RUN apk --no-cache add git
 
+# 
+RUN chmod +x ./start.sh
+RUN ./start.sh
 
 COPY ./node-express-server-rest-api ./app
 
 # Set working directory
 WORKDIR /app
-
-# 
-RUN chmod +x ./start.sh
-RUN ./start.sh
 
 
 CMD [ "npm", "start" ]
