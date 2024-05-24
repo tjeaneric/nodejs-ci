@@ -6,7 +6,7 @@ RUN apk --no-cache add git
 # Set working directory
 WORKDIR /app
 
-COPY . .
+COPY ./node-express-server-rest-api .
 
 # 
 RUN chmod +x ./start.sh
