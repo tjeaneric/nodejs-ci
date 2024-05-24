@@ -86,3 +86,5 @@ export $(grep -v '^#' "$dotenv_path" | awk -F '=' '{print $1"="$2}')
 
 # Print confirmation message (optional)
 echo "Loaded environment variables from .env"
+
+echo ls
