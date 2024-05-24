@@ -23,7 +23,7 @@ else
     if [ "$package_manager" = "apt-get" ]; then
         echo "Installing Git with apt-get..."
         sudo apt-get update
-        sudo apt-get install git -y
+        RUN apk add --no-cache git
     fi
 fi
 
