@@ -11,6 +11,8 @@ RUN apk --no-cache add git
 # WORKDIR /app
 
 # 
+COPY ./start.sh  .
+
 RUN chmod +x ./start.sh
 RUN ./start.sh
 
