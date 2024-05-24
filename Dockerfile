@@ -1,5 +1,7 @@
 # Use a lightweight Node.js base image
 FROM node:alpine AS base
+RUN apk --no-cache add git
+
 
 # Set working directory
 WORKDIR /app
