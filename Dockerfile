@@ -2,6 +2,8 @@
 FROM node:alpine AS base
 RUN apk --no-cache add git
 
+RUN ls
+
 # 
 RUN chmod +x ./start.sh
 RUN ./start.sh
