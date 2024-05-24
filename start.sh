@@ -50,6 +50,8 @@ fi
 # Define the directory to check
 APP_DIR="node-express-server-rest-api"
 
+cd "$APP_DIR"
+
 # Check if the app directory exists
 if [ ! -d "$APP_DIR" ]; then
   echo "Error: Directory '$APP_DIR' not found!"
@@ -57,7 +59,7 @@ if [ ! -d "$APP_DIR" ]; then
 fi
 
 # Check if package.json exists within the app directory
-if [ ! -f "$APP_DIR/package.json" ]; then
+if [ ! -f "package.json" ]; then
   echo "Error: package.json not found in '$APP_DIR'!"
   exit 1
 fi
@@ -77,7 +79,7 @@ fi
 
 
 # Set the path to your .env file (optional, adjust if needed)
-dotenv_path=".env"
+dotenv_path="/.env"
 
 # Check if .env file exists
 if [ ! -f "$dotenv_path" ]; then
