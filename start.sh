@@ -52,12 +52,6 @@ APP_DIR="node-express-server-rest-api"
 
 cd "$APP_DIR"
 
-# Check if the app directory exists
-if [ ! -d "$APP_DIR" ]; then
-  echo "Error: Directory '$APP_DIR' not found!"
-  exit 1
-fi
-
 # Check if package.json exists within the app directory
 if [ ! -f "package.json" ]; then
   echo "Error: package.json not found in '$APP_DIR'!"
