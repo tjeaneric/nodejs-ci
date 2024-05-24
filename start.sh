@@ -33,6 +33,8 @@ repo_url="https://github.com/rwieruch/node-express-server-rest-api"
 # Check if a URL argument is provided
 if [ -z "$repo_url" ]; then
   echo "Usage: $0 <repository_url>"
+  echo "*****************************************"
+  echo ls
   exit 1
 fi
 
